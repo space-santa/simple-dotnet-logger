@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureTracker", "TemperatureTracker\TemperatureTracker.csproj", "{8EBF8E4D-A9A7-4722-8551-B057081B1CDA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|ARM = Release|ARM
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8EBF8E4D-A9A7-4722-8551-B057081B1CDA}.Debug|ARM.ActiveCfg = Debug|ARM
+		{8EBF8E4D-A9A7-4722-8551-B057081B1CDA}.Debug|ARM.Build.0 = Debug|ARM
+		{8EBF8E4D-A9A7-4722-8551-B057081B1CDA}.Debug|ARM.Deploy.0 = Debug|ARM
+		{8EBF8E4D-A9A7-4722-8551-B057081B1CDA}.Debug|x64.ActiveCfg = Debug|x64
+		{8EBF8E4D-A9A7-4722-8551-B057081B1CDA}.Debug|x64.Build.0 = Debug|x64
+		{8EBF8E4D-A9A7-4722-8551-B057081B1CDA}.Debug|x64.Deploy.0 = Debug|x64
+		{8EBF8E4D-A9A7-4722-8551-B057081B1CDA}.Debug|x86.ActiveCfg = Debug|x86
+		{8EBF8E4D-A9A7-4722-8551-B057081B1CDA}.Debug|x86.Build.0 = Debug|x86
+		{8EBF8E4D-A9A7-4722-8551-B057081B1CDA}.Debug|x86.Deploy.0 = Debug|x86
+		{8EBF8E4D-A9A7-4722-8551-B057081B1CDA}.Release|ARM.ActiveCfg = Release|ARM
+		{8EBF8E4D-A9A7-4722-8551-B057081B1CDA}.Release|ARM.Build.0 = Release|ARM
+		{8EBF8E4D-A9A7-4722-8551-B057081B1CDA}.Release|ARM.Deploy.0 = Release|ARM
+		{8EBF8E4D-A9A7-4722-8551-B057081B1CDA}.Release|x64.ActiveCfg = Release|x64
+		{8EBF8E4D-A9A7-4722-8551-B057081B1CDA}.Release|x64.Build.0 = Release|x64
+		{8EBF8E4D-A9A7-4722-8551-B057081B1CDA}.Release|x64.Deploy.0 = Release|x64
+		{8EBF8E4D-A9A7-4722-8551-B057081B1CDA}.Release|x86.ActiveCfg = Release|x86
+		{8EBF8E4D-A9A7-4722-8551-B057081B1CDA}.Release|x86.Build.0 = Release|x86
+		{8EBF8E4D-A9A7-4722-8551-B057081B1CDA}.Release|x86.Deploy.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B561E573-8652-4581-BCFF-E1938B2185FC}
+	EndGlobalSection
+EndGlobal
