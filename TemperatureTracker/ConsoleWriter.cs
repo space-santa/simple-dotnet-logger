@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace TemperatureTracker
 {
-    public interface ITemperatureWriter
+    class ConsoleWriter : ITemperatureWriter
     {
-        void Write(string value);
+        public void Write(string value)
+        {
+            System.Diagnostics.Debug.WriteLine(value);
+        }
     }
 }

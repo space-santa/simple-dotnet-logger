@@ -9,12 +9,12 @@ using CronLib;
 
 namespace TemperatureTracker
 {
-    public class TemperatureJob : CronJob
+    public class TemperatureJob<TheWriter> : CronJob where TheWriter : ITemperatureWriter, new()
     {
         private readonly TimeSpan begin = new TimeSpan(7, 15, 0);
         private readonly TimeSpan end = new TimeSpan(23, 15, 0);
 
-        private bool isInTime()
+        private bool IsInTime()
         {
             TimeSpan now = DateTime.Now.TimeOfDay;
             return now > begin && now < end;
@@ -28,7 +28,9 @@ namespace TemperatureTracker
                 var wrap = new SenseHatWrapper(senseHat);
                 wrap.ClearDisplay();
                 var temperature = wrap.Temperature();
-                if (isInTime())
+                ITemperatureWriter writer = new TheWriter();
+                writer.Write(temperature.ToString());
+                if (IsInTime())
                 {
                     wrap.Write(temperature.ToString(), TemperatureColourMap.colourForTemperature(temperature), DisplayDirection.Deg180);
                 }
@@ -41,7 +43,7 @@ namespace TemperatureTracker
     {
         public static void Run()
         {
-            CronRunner<TemperatureJob>.Run("0 0/1 * * * ?").GetAwaiter().GetResult();
+            CronRunner<TemperatureJob<ConsoleWriter>>.Run("0 0/1 * * * ?").GetAwaiter().GetResult();
         }
     }
 }
