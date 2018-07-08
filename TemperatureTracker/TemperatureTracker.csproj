@@ -95,7 +95,10 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BME280.cs" />
+    <Compile Include="BME280Wrapper.cs" />
     <Compile Include="ConsoleWriter.cs" />
+    <Compile Include="ISensor.cs" />
     <Compile Include="ITemperatureWriter.cs" />
     <Compile Include="PostWriter.cs" />
     <Compile Include="TemperatureColourMap.cs" />
