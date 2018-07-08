@@ -97,6 +97,7 @@
     </Compile>
     <Compile Include="ConsoleWriter.cs" />
     <Compile Include="ITemperatureWriter.cs" />
+    <Compile Include="PostWriter.cs" />
     <Compile Include="TemperatureColourMap.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
