@@ -8,7 +8,7 @@ namespace TemperatureTracker
 {
     class ConsoleWriter : ITemperatureWriter
     {
-        public void Write(string value)
+        public async Task Write(string value)
         {
             System.Diagnostics.Debug.WriteLine(value);
         }

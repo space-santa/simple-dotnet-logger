@@ -8,6 +8,6 @@ namespace TemperatureTracker
 {
     public interface ITemperatureWriter
     {
-        void Write(string value);
+        Task Write(string value);
     }
 }
