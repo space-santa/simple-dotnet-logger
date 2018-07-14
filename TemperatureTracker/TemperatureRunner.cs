@@ -27,7 +27,17 @@ namespace TemperatureTracker
     {
         public static void Run()
         {
-            CronRunner<TemperatureJob<BME280Wrapper, PostWriter>>.Run("0 0/1 * * * ?").GetAwaiter().GetResult();
+            switch (Config.Instance.Device)
+            {
+                case "SenseHat":
+                    CronRunner<TemperatureJob<SenseHatWrapper, PostWriter>>.Run(Config.Instance.CronJob).GetAwaiter().GetResult();
+                    break;
+                case "BME280":
+                    CronRunner<TemperatureJob<BME280Wrapper, PostWriter>>.Run(Config.Instance.CronJob).GetAwaiter().GetResult();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

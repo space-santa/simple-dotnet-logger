@@ -97,6 +97,7 @@
     </Compile>
     <Compile Include="BME280.cs" />
     <Compile Include="BME280Wrapper.cs" />
+    <Compile Include="Config.cs" />
     <Compile Include="ConsoleWriter.cs" />
     <Compile Include="ISensor.cs" />
     <Compile Include="ITemperatureWriter.cs" />
@@ -114,6 +115,7 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="LICENSE" />
+    <PRIResource Include="Resources.resw" />
     <None Include="TemperatureTracker_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
