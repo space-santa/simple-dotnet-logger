@@ -108,6 +108,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SenseHatWrapper.cs" />
+    <Compile Include="TemperatureJob.cs" />
     <Compile Include="TemperatureRunner.cs" />
   </ItemGroup>
   <ItemGroup>
