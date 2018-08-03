@@ -121,13 +121,14 @@
     <value>0 * * * * ?</value>
   </data>
   <data name="Device" xml:space="preserve">
-    <value>BME280</value>
-    <comment>SenseHat; BME280</comment>
+    <value>Mock</value>
+    <comment>SenseHat; BME280; Mock</comment>
   </data>
   <data name="EndPoint" xml:space="preserve">
     <value>http://whiterun:4567/api/temperature</value>
   </data>
   <data name="Writer" xml:space="preserve">
-    <value>Post</value>
+    <value>Console</value>
+    <comment>Post; Console</comment>
   </data>
 </root>

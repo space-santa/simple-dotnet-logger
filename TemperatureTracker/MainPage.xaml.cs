@@ -26,6 +26,7 @@ namespace TemperatureTracker
         public MainPage()
         {
             InitializeComponent();
+            Logger.Instance.Log("let's go");
             Debug.WriteLine("Get started...");
             TemperatureRunner.Run();
         }

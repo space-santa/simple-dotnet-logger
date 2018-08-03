@@ -3,8 +3,8 @@ using CronLib;
 
 namespace TemperatureTracker
 {
-    public class TemperatureJob<TheSensor, TheWriter> : CronJob 
-        where TheSensor : ISensor, new() 
+    public class TemperatureJob<TheSensor, TheWriter> : CronJob
+        where TheSensor : ISensor, new()
         where TheWriter : ITemperatureWriter, new()
     {
         protected override async Task Functionality()

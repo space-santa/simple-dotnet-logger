@@ -10,6 +10,7 @@ namespace TemperatureTracker
     {
         public async Task Write(string value)
         {
+            Logger.Instance.Log(value);
             System.Diagnostics.Debug.WriteLine(value);
         }
     }
