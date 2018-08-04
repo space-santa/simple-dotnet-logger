@@ -20,10 +20,18 @@ namespace TemperatureTracker
             json.Add("temperature", JsonValue.CreateStringValue(value));
 
             var content = new StringContent(json.ToString(), Encoding.UTF8, "application/json");
-            System.Diagnostics.Debug.WriteLine(content);
-            var response = await client.PostAsync(Config.Instance.EndPoint, content);
-            var responseString = await response.Content.ReadAsStringAsync();
-            System.Diagnostics.Debug.WriteLine(responseString);
+            Logger.Instance.Log(content.ToString());
+
+            try
+            {
+                var response = await client.PostAsync(Config.Instance.EndPoint, content);
+                var responseString = await response.Content.ReadAsStringAsync();
+                Logger.Instance.Log(responseString);
+            }
+            catch (HttpRequestException e)
+            {
+                Logger.Instance.Log(e.Message);
+            }
         }
     }
 }

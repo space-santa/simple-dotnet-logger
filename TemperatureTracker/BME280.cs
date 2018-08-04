@@ -95,7 +95,7 @@ namespace TemperatureTracker
         //Method to initialize the BME280 sensor
         public async Task Initialize()
         {
-            Debug.WriteLine("BME280::Initialize");
+            Logger.Instance.Log("BME280::Initialize");
 
             try
             {
@@ -112,30 +112,30 @@ namespace TemperatureTracker
                 //Check if device was found
                 if (bme280 == null)
                 {
-                    Debug.WriteLine("Device not found");
+                    Logger.Instance.Log("Device not found");
                 }
             }
             catch (Exception e)
             {
-                Debug.WriteLine("Exception: " + e.Message + "\n" + e.StackTrace);
+                Logger.Instance.Log("Exception: " + e.Message + "\n" + e.StackTrace);
                 throw;
             }
 
         }
         private async Task Begin()
         {
-            Debug.WriteLine("BME280::Begin");
+            Logger.Instance.Log("BME280::Begin");
             byte[] WriteBuffer = new byte[] { (byte)eRegisters.BME280_REGISTER_CHIPID };
             byte[] ReadBuffer = new byte[] { 0xFF };
 
             //Read the device signature
             bme280.WriteRead(WriteBuffer, ReadBuffer);
-            Debug.WriteLine("BME280 Signature: " + ReadBuffer[0].ToString());
+            Logger.Instance.Log("BME280 Signature: " + ReadBuffer[0].ToString());
 
             //Verify the device signature
             if (ReadBuffer[0] != BME280_Signature)
             {
-                Debug.WriteLine("BME280::Begin Signature Mismatch.");
+                Logger.Instance.Log("BME280::Begin Signature Mismatch.");
                 return;
             }
 
@@ -268,7 +268,7 @@ namespace TemperatureTracker
             var1 = (((((Int64)1 << 47) + var1)) * (Int64)CalibrationData.dig_P1) >> 33;
             if (var1 == 0)
             {
-                Debug.WriteLine("BME280_compensate_P_Int64 Jump out to avoid / 0");
+                Logger.Instance.Log("BME280_compensate_P_Int64 Jump out to avoid / 0");
                 return 0; //Avoid exception caused by division by zero
             }
             //Perform calibration operations as per datasheet: http://www.adafruit.com/datasheets/BST-BME280-DS001-11.pdf

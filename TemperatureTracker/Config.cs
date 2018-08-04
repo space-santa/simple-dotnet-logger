@@ -16,6 +16,7 @@ namespace TemperatureTracker
         public string Writer { get; }
         public string EndPoint { get; }
         public string CronJob { get; }
+        public string Logger { get; }
 
         // Explicit static constructor to tell C# compiler
         // not to mark type as beforefieldinit
@@ -30,6 +31,7 @@ namespace TemperatureTracker
             Writer = resourceLoader.GetString("Writer");
             EndPoint = resourceLoader.GetString("EndPoint");
             CronJob = resourceLoader.GetString("CronJob");
+            Logger = resourceLoader.GetString("Logger");
         }
 
         public static Config Instance
