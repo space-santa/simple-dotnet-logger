@@ -101,7 +101,6 @@
     <Compile Include="ConsoleWriter.cs" />
     <Compile Include="ISensor.cs" />
     <Compile Include="ITemperatureWriter.cs" />
-    <Compile Include="Logger.cs" />
     <Compile Include="MockSensor.cs" />
     <Compile Include="PostWriter.cs" />
     <Compile Include="TemperatureColourMap.cs" />
@@ -156,6 +155,12 @@
     <SDKReference Include="WindowsIoT, Version=10.0.17134.0">
       <Name>Windows IoT Extensions for the UWP</Name>
     </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Logger\Logger.csproj">
+      <Project>{e8bb6989-c058-458d-bf43-2b1a6e72851c}</Project>
+      <Name>Logger</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

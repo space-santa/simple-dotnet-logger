@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Logger;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -26,8 +27,8 @@ namespace TemperatureTracker
         public MainPage()
         {
             InitializeComponent();
-            Logger.Instance.UseConsole = Config.Instance.Logger == "Console";
-            Logger.Instance.Log("Get started...");
+            Log.Instance.UseConsole = Config.Instance.Logger == "Console";
+            Log.Instance.Write("Get started...");
             TemperatureRunner.Run();
         }
     }

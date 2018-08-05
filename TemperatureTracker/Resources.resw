@@ -125,11 +125,11 @@
     <comment>SenseHat; BME280; Mock</comment>
   </data>
   <data name="EndPoint" xml:space="preserve">
-    <value>http://whiterun:4567</value>
+    <value>http://whiterun:4567/api/temperature</value>
     <comment>http://whiterun:4567</comment>
   </data>
   <data name="Logger" xml:space="preserve">
-    <value>Console</value>
+    <value>File</value>
     <comment>File, Console</comment>
   </data>
   <data name="Writer" xml:space="preserve">

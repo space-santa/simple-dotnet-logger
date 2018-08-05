@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using CronLib;
+using Logger;
 
 namespace TemperatureTracker
 {
@@ -46,7 +47,7 @@ namespace TemperatureTracker
             where TheSensor : ISensor, new()
             where TheWriter : ITemperatureWriter, new()
         {
-            Logger.Instance.Log("Get Started");
+            Log.Instance.Write("Get Started");
             CronRunner<TemperatureJob<TheSensor, TheWriter>>.Run(Config.Instance.CronJob).GetAwaiter().GetResult();
         }
     }

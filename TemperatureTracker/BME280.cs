@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Diagnostics;
+using Logger;
 using System.Threading.Tasks;
 using Windows.Devices.Enumeration;
 using Windows.Devices.I2c;
@@ -95,7 +95,7 @@ namespace TemperatureTracker
         //Method to initialize the BME280 sensor
         public async Task Initialize()
         {
-            Logger.Instance.Log("BME280::Initialize");
+            Log.Instance.Write("BME280::Initialize");
 
             try
             {
@@ -112,30 +112,30 @@ namespace TemperatureTracker
                 //Check if device was found
                 if (bme280 == null)
                 {
-                    Logger.Instance.Log("Device not found");
+                    Log.Instance.Write("Device not found");
                 }
             }
             catch (Exception e)
             {
-                Logger.Instance.Log("Exception: " + e.Message + "\n" + e.StackTrace);
+                Log.Instance.Write("Exception: " + e.Message + "\n" + e.StackTrace);
                 throw;
             }
 
         }
         private async Task Begin()
         {
-            Logger.Instance.Log("BME280::Begin");
+            Log.Instance.Write("BME280::Begin");
             byte[] WriteBuffer = new byte[] { (byte)eRegisters.BME280_REGISTER_CHIPID };
             byte[] ReadBuffer = new byte[] { 0xFF };
 
             //Read the device signature
             bme280.WriteRead(WriteBuffer, ReadBuffer);
-            Logger.Instance.Log("BME280 Signature: " + ReadBuffer[0].ToString());
+            Log.Instance.Write("BME280 Signature: " + ReadBuffer[0].ToString());
 
             //Verify the device signature
             if (ReadBuffer[0] != BME280_Signature)
             {
-                Logger.Instance.Log("BME280::Begin Signature Mismatch.");
+                Log.Instance.Write("BME280::Begin Signature Mismatch.");
                 return;
             }
 
@@ -268,7 +268,7 @@ namespace TemperatureTracker
             var1 = (((((Int64)1 << 47) + var1)) * (Int64)CalibrationData.dig_P1) >> 33;
             if (var1 == 0)
             {
-                Logger.Instance.Log("BME280_compensate_P_Int64 Jump out to avoid / 0");
+                Log.Instance.Write("BME280_compensate_P_Int64 Jump out to avoid / 0");
                 return 0; //Avoid exception caused by division by zero
             }
             //Perform calibration operations as per datasheet: http://www.adafruit.com/datasheets/BST-BME280-DS001-11.pdf

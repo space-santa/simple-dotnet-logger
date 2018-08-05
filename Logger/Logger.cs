@@ -1,39 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.IO;
 using System.Threading.Tasks;
-using Windows.Storage;
 
-namespace TemperatureTracker
+namespace Logger
 {
-    internal sealed class Logger
+    public sealed class Log
     {
-        private static readonly Logger instance = new Logger();
-        private StorageFile theLog;
+        private static readonly Log instance = new Log();
+        private string theLogPath;
         public Boolean UseConsole { get; set; } = true;
 
         // Explicit static constructor to tell C# compiler
         // not to mark type as beforefieldinit
-        static Logger()
+        static Log()
         {
         }
 
-        private Logger()
+        private Log()
         {
-            System.Diagnostics.Debug.WriteLine("Hello");
-            Task.Run(() => init()).Wait();
+            init();
         }
 
-        private async Task init()
+        private void init()
         {
-            StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
-            theLog = await storageFolder.CreateFileAsync("the.log", CreationCollisionOption.OpenIfExists);
-            //useConsole = Config.Instance.Logger == "Console";
-            System.Diagnostics.Debug.WriteLine(theLog.Path);
+            string storageFolder = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            theLogPath = storageFolder + "/the.log";
+            System.Diagnostics.Debug.WriteLine(theLogPath);
         }
 
-        public static Logger Instance
+        public static Log Instance
         {
             get
             {
@@ -43,7 +38,7 @@ namespace TemperatureTracker
 
         public void LogToFile(string message)
         {
-            Task.Run(() => FileIO.AppendTextAsync(theLog, message));
+            Task.Run(() => File.AppendAllText(theLogPath, message));
         }
 
         public void LogToConsole(string message)
@@ -51,7 +46,7 @@ namespace TemperatureTracker
             System.Diagnostics.Debug.WriteLine(message);
         }
 
-        public void Log(string what)
+        public void Write(string what)
         {
             var timestamp = DateTime.UtcNow.ToLocalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffzzz");
             var message = timestamp + " " + what + "\n";

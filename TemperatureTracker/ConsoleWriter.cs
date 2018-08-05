@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Logger;
 
 namespace TemperatureTracker
 {
@@ -10,7 +11,7 @@ namespace TemperatureTracker
     {
         public async Task Write(string value)
         {
-            Logger.Instance.Log(value);
+            Log.Instance.Write(value);
             System.Diagnostics.Debug.WriteLine(value);
         }
     }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http;
 using Windows.Data.Json;
+using Logger;
 
 namespace TemperatureTracker
 {
@@ -20,17 +21,18 @@ namespace TemperatureTracker
             json.Add("temperature", JsonValue.CreateStringValue(value));
 
             var content = new StringContent(json.ToString(), Encoding.UTF8, "application/json");
-            Logger.Instance.Log(content.ToString());
+            Log.Instance.Write(json.ToString());
 
             try
             {
                 var response = await client.PostAsync(Config.Instance.EndPoint, content);
                 var responseString = await response.Content.ReadAsStringAsync();
-                Logger.Instance.Log(responseString);
+                Log.Instance.Write($"Got this response: {responseString}!");
             }
             catch (HttpRequestException e)
             {
-                Logger.Instance.Log(e.Message);
+                Log.Instance.Write(e.Message);
+                Log.Instance.Write(e.ToString());
             }
         }
     }
